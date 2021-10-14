@@ -44,6 +44,8 @@
     <p> Press the button to create an new element of type div and then add it to the container.
     </p>
     <button onclick="makeNewDiv()">Push value</button>
+    <button onclick="popItem()">Pop</button>
+    <button onclick="zap()">Zapvalues</button>
 
 
 </body>
@@ -55,8 +57,30 @@
         element.className = "stack";
         /* add it to the container */
         document.getElementById('target').appendChild(element)
+    }
+    function popItem() {
+        stack_item = document.getElementsByClassName("stack")
+        len = stack_item.length
+        if (stack_item != undefined && len > 0) {
+            stack_item[len - 1].remove()
+        }
+    }
+    function zap() {
+        stack_item = document.getElementsByClassName("stack")
+        element = document.getElementById('f_i').value
+        if (stack_item != undefined && stack_item.length > 0) {
+            for (let i = 0; i < stack_item.length; i++) {
+                ele = stack_item[i].innerHTML;
+                if (ele == element) {
+                    console.log(ele)
+                    stack_item[i].remove()
+                    i--
+                }
+            }
+        }
 
     }
+
 </script>
 
 </html>
